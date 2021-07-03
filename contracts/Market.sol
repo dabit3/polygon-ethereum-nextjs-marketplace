@@ -39,6 +39,10 @@ contract NFTMarket is ReentrancyGuard {
     uint256 price
   );
 
+  function getListingPrice() public view returns (uint256) {
+    return listingPrice;
+  }
+
   function getMarketItem(uint256 marketItemId) public view returns (MarketItem memory) {
     return idToMarketItem[marketItemId];
   }
@@ -81,6 +85,8 @@ contract NFTMarket is ReentrancyGuard {
     ) public payable nonReentrant {
     uint price = idToMarketItem[itemId].price;
     uint tokenId = idToMarketItem[itemId].tokenId;
+    console.log('message value: ', msg.value);
+    console.log('price: ', price);
     require(msg.value == price, "Please submit the asking price in order to complete the purchase");
 
     idToMarketItem[itemId].seller.transfer(msg.value);

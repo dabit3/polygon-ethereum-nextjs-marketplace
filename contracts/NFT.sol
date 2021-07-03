@@ -12,7 +12,7 @@ contract NFT is ERC721URIStorage {
     Counters.Counter private _tokenIds;
     address contractAddress;
 
-    constructor(address marketplaceAddress) ERC721("Eat The Blocks NFTs", "ETBNFT") {
+    constructor(address marketplaceAddress) ERC721("NDPunks", "NDP") {
         contractAddress = marketplaceAddress;
     }
 

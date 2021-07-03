@@ -4,6 +4,7 @@ import { create as ipfsHttpClient } from 'ipfs-http-client'
 import { useRouter } from 'next/router'
 import Web3Modal from 'web3modal'
 import web3 from 'web3'
+import { BigNumber } from 'ethers'
 
 const client = ipfsHttpClient('https://ipfs.infura.io:5001/api/v0')
 
@@ -20,10 +21,7 @@ export default function Home() {
   const router = useRouter()
 
   async function createSale(url) {
-    const web3Modal = new Web3Modal({
-      network: "mainnet",
-      cacheProvider: true,
-    });
+    const web3Modal = new Web3Modal();
     const connection = await web3Modal.connect()
     const provider = new ethers.providers.Web3Provider(connection)    
     const signer = provider.getSigner()
@@ -36,9 +34,10 @@ export default function Home() {
     let tokenId = value.toNumber()
     const price = web3.utils.toWei(formInput.price, 'ether')
   
-    const listingPrice = web3.utils.toWei('0.1', 'ether')
-
     contract = new ethers.Contract(nftmarketaddress, Market.abi, signer)
+    let listingPrice = await contract.getListingPrice();
+    listingPrice = listingPrice.toString()
+
     transaction = await contract.createMarketItem(nftaddress, tokenId, price, { value: listingPrice })
     
     await transaction.wait()

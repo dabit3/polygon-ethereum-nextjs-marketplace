@@ -22,7 +22,9 @@ task("accounts", "Prints the list of accounts", async () => {
 module.exports = {
   defaultNetwork: "hardhat",
   networks: {
-    hardhat: {},
+    hardhat: {
+      chainId: 1337
+    },
     mumbai: {
       url: "https://rpc-mumbai.matic.today",
       accounts: [privateKey]
