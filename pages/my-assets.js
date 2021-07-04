@@ -1,6 +1,5 @@
 import { ethers } from 'ethers'
 import { useEffect, useState } from 'react'
-import web3 from 'web3'
 import axios from 'axios'
 import Web3Modal from "web3modal"
 
@@ -13,12 +12,15 @@ import NFT from '../artifacts/contracts/NFT.sol/NFT.json'
 
 export default function Home() {
   const [nfts, setNfts] = useState([])
-  const [loaded, setLoaded] = useState('not-loaded')
+  const [loadingState, setLoadingState] = useState('not-loaded')
+  useEffect(() => {
+    loadNFTs()
+  }, [])
   async function loadNFTs() {
     const web3Modal = new Web3Modal({
       network: "mainnet",
       cacheProvider: true,
-    });
+    })
     const connection = await web3Modal.connect()
     const provider = new ethers.providers.Web3Provider(connection)
     const signer = provider.getSigner()
@@ -30,7 +32,7 @@ export default function Home() {
     const items = await Promise.all(data.map(async i => {
       const tokenUri = await tokenContract.tokenURI(i.tokenId)
       const meta = await axios.get(tokenUri)
-      let price = web3.utils.fromWei(i.price.toString(), 'ether');
+      let price = ethers.utils.formatUnits(i.price.toString(), 'ether')
       let item = {
         price,
         tokenId: i.tokenId.toNumber(),
@@ -40,21 +42,21 @@ export default function Home() {
       }
       return item
     }))
-    console.log('items: ', items)
     setNfts(items)
-    setLoaded('loaded') 
+    setLoadingState('loaded') 
   }
-  if (loaded === 'loaded' && !nfts.length) return (<h1 className="p-20 text-4xl">No NFTs!</h1>)
-  if (loaded === 'not-loaded' && !nfts.length) return (<button onClick={loadNFTs} className="rounded bg-blue-600 py-2 px-12 text-white m-16">Fetch NFTs</button>)
+  if (loadingState === 'loaded' && !nfts.length) return (<h1 className="py-10 px-20 text-3xl">No assets owned</h1>)
   return (
     <div className="flex justify-center">
-      <div style={{ width: 900 }}>
-        <div className="grid grid-cols-2 gap-4 pt-8">
+      <div className="p-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-4">
           {
             nfts.map((nft, i) => (
-              <div key={i} className="border p-4 shadow">
+              <div key={i} className="border shadow rounded-xl overflow-hidden">
                 <img src={nft.image} className="rounded" />
-                <p className="text-2xl my-4 font-bold">Price paid: {nft.price}</p>
+                <div className="p-4 bg-black">
+                  <p className="text-2xl font-bold text-white">Price - {nft.price} Eth</p>
+                </div>
               </div>
             ))
           }
