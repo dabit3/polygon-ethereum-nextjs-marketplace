@@ -21,25 +21,21 @@ npm install
 yarn
 ```
 
-2. Create a file named `.secret` in the root directory of the project. Either leave it blank or paste in a test account private key if you are going to be deploying to Matic Mumbai.
-
-_Consider using an environment variable if working on Matic Mainnet with real tokens and not storing them in a file associated with the project._
-
-3. Start the local Hardhat node
+2. Start the local Hardhat node
 
 ```sh
 npx hardhat node
 ```
 
-4. With the network running, deploy the contracts to the local network in a separate terminal window
+3. With the network running, deploy the contracts to the local network in a separate terminal window
 
 ```sh
 npx hardhat run scripts/deploy.js --network localhost
 ```
 
-5. Rename __config.example.js__ to __config.js__ and copy the `nftmarketaddress` and `nftaddress` values to it.
+4. Rename __config.example.js__ to __config.js__ and copy the `nftmarketaddress` and `nftaddress` values to it.
 
-6. Start the app
+5. Start the app
 
 ```
 npm run dev
@@ -47,7 +43,7 @@ npm run dev
 
 ### Configuration
 
-The main configuration for this project to work successfully on Polygon is located in __hardhat.config.js__:
+To deploy to Polygon test or main networks, update the configurations located in __hardhat.config.js__ to use a private key and, optionally, deploy to a private RPC like Infura.
 
 ```javascript
 require("@nomiclabs/hardhat-waffle");
@@ -88,4 +84,4 @@ module.exports = {
 };
 ```
 
-If using Infura, update __.infuraid__ with your [Infura](https://infura.io/) project ID and, if you are planning on deploying to the main network, update __.secret__ with the Private Key of the account that you would like to use to deploy.
+If using Infura, update __.infuraid__ with your [Infura](https://infura.io/) project ID.
