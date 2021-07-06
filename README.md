@@ -21,7 +21,7 @@ npm install
 yarn
 ```
 
-2. Create a `.secret` file. Either leave it blank or paste in a test account private key if you are going to be deploying to Matic Mumbai.
+2. Create a file named `.secret` in the root directory of the project. Either leave it blank or paste in a test account private key if you are going to be deploying to Matic Mumbai.
 
 _Consider using an environment variable if working on Matic Mainnet with real tokens and not storing them in a file associated with the project._
 
