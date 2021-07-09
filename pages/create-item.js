@@ -3,7 +3,6 @@ import { ethers } from 'ethers'
 import { create as ipfsHttpClient } from 'ipfs-http-client'
 import { useRouter } from 'next/router'
 import Web3Modal from 'web3modal'
-import web3 from 'web3'
 
 const client = ipfsHttpClient('https://ipfs.infura.io:5001/api/v0')
 
@@ -64,7 +63,8 @@ export default function Home() {
     let event = tx.events[0]
     let value = event.args[2]
     let tokenId = value.toNumber()
-    const price = web3.utils.toWei(formInput.price, 'ether')
+
+    const price = ethers.utils.parseUnits(formInput.price.toString(), 'ether')
   
     /* then list the item for sale on the marketplace */
     contract = new ethers.Contract(nftmarketaddress, Market.abi, signer)
