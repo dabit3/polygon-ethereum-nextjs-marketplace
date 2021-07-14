@@ -1,7 +1,7 @@
 import '../styles/globals.css'
 import Link from 'next/link'
 
-function MyApp({ Component, pageProps }) {
+function Marketplace({ Component, pageProps }) {
   return (
     <div>
       <nav className="border-b p-6">
@@ -34,4 +34,4 @@ function MyApp({ Component, pageProps }) {
   )
 }
 
-export default MyApp
+export default Marketplace

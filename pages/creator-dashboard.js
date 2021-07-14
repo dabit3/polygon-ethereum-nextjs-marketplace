@@ -10,7 +10,7 @@ import {
 import Market from '../artifacts/contracts/Market.sol/NFTMarket.json'
 import NFT from '../artifacts/contracts/NFT.sol/NFT.json'
 
-export default function Home() {
+export default function CreatorDashboard() {
   const [nfts, setNfts] = useState([])
   const [sold, setSold] = useState([])
   const [loadingState, setLoadingState] = useState('not-loaded')
