@@ -1,0 +1,10 @@
+tasks:
+  - name: Install, start node, and deploy
+    init: yarn
+    command: npx hardhat node
+  - name: Deploy smart contract and start server
+    command: |
+      gp await-port 8545
+      npx hardhat run scripts/deploy.js --network localhost
+      npm run dev
+    openMode: tab-after
