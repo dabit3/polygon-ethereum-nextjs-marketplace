@@ -4,6 +4,28 @@
 
 ### Running this project
 
+#### Gitpod
+
+To deploy this project to Gitpod, follow these steps:
+
+1. Click [this](https://gitpod.io/#github.com/dabit3/polygon-ethereum-nextjs-marketplace) link to deploy
+
+2. In __pages/index.js__, pass in the RPC address given to you by GitPod to the call to `JsonRpcProvider` function:
+
+```javascript
+/* update this: */
+const provider = new ethers.providers.JsonRpcProvider()
+
+/* to this: */
+const provider = new ethers.providers.JsonRpcProvider("https://8545-youendpoint.gitpod.io/")
+```
+
+3. Import the RPC address given to you by GitPod into your MetaMask wallet
+
+![MetaMask RPC Import](wallet.png)
+
+#### Local setup
+
 To run this project locally, follow these steps.
 
 1. Clone the project locally, change into the directory, and install the dependencies:
@@ -33,9 +55,7 @@ npx hardhat node
 npx hardhat run scripts/deploy.js --network localhost
 ```
 
-4. Rename __config.example.js__ to __config.js__ and copy the `nftmarketaddress` and `nftaddress` values to it.
-
-5. Start the app
+4. Start the app
 
 ```
 npm run dev

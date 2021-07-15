@@ -8,3 +8,6 @@ tasks:
       npx hardhat run scripts/deploy.js --network localhost
       npm run dev
     openMode: tab-after
+ports:
+  - port: 3000-8545
+    visibility: public
