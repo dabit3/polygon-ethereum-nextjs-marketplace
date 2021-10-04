@@ -30,7 +30,7 @@ describe("NFTMarket", function() {
       const tokenUri = await nft.tokenURI(i.tokenId)
       let item = {
         price: i.price.toString(),
-        tokenId: i.price.toString(),
+        tokenId: i.tokenId.toString(),
         seller: i.seller,
         owner: i.owner,
         tokenUri
