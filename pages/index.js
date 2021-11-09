@@ -17,7 +17,7 @@ export default function Home() {
     loadNFTs()
   }, [])
   async function loadNFTs() {    
-    const provider = new ethers.providers.JsonRpcProvider()
+    const provider = new ethers.providers.JsonRpcProvider("https://8545-bronze-lemur-c9rjug4x.ws-eu18.gitpod.io/")
     const tokenContract = new ethers.Contract(nftaddress, NFT.abi, provider)
     const marketContract = new ethers.Contract(nftmarketaddress, Market.abi, provider)
     const data = await marketContract.fetchMarketItems()
