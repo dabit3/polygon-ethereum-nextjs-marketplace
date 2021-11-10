@@ -14,17 +14,15 @@ To deploy this project to Gitpod, follow these steps:
 
 [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#github.com/dabit3/polygon-ethereum-nextjs-marketplace)
 
-2. In __pages/index.js__, pass in the RPC address given to you by GitPod to the call to `JsonRpcProvider` function:
+2. Import the RPC address given to you by GitPod into your MetaMask wallet
 
-```javascript
-/* update this: */
-const provider = new ethers.providers.JsonRpcProvider()
+This endpoint will look something like this:
 
-/* to this: */
-const provider = new ethers.providers.JsonRpcProvider("https://8545-youendpoint.gitpod.io/")
+```
+https://8545-copper-swordtail-j1mvhxv3.ws-eu18.gitpod.io/
 ```
 
-3. Import the RPC address given to you by GitPod into your MetaMask wallet
+The chain ID should be 1337. If you have a localhost rpc set up, you may need to overwrite it.
 
 ![MetaMask RPC Import](wallet.png)
 
