@@ -61,6 +61,10 @@ npx hardhat run scripts/deploy.js --network localhost
 
 ```
 npm run dev
+
+# or
+
+yarn dev
 ```
 
 ### Configuration
