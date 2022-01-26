@@ -107,8 +107,9 @@ export default function CreateItem() {
               <Image
                 src={fileUrl}
                 alt="A file as a picture"
-                width={350}
                 className="rounded mt-4"
+                //width={350}
+                layout='fill'
               />
             </>
           )
