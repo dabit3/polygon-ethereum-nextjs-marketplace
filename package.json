@@ -19,6 +19,7 @@
     "hardhat": "^2.4.1",
     "ipfs-http-client": "50.1.2",
     "next": "11.0.1",
+    "prb-math": "^2.4.3",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "web3modal": "^1.9.3"
