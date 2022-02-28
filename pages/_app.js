@@ -1,7 +1,8 @@
+/* pages/_app.js */
 import '../styles/globals.css'
 import Link from 'next/link'
 
-function Marketplace({ Component, pageProps }) {
+function MyApp({ Component, pageProps }) {
   return (
     <div>
       <nav className="border-b p-6">
@@ -12,19 +13,19 @@ function Marketplace({ Component, pageProps }) {
               Home
             </a>
           </Link>
-          <Link href="/create-item">
+          <Link href="/create-nft">
             <a className="mr-6 text-pink-500">
-              Sell Digital Asset
+              Sell NFT
             </a>
           </Link>
-          <Link href="/my-assets">
+          <Link href="/my-nfts">
             <a className="mr-6 text-pink-500">
-              My Digital Assets
+              My NFTs
             </a>
           </Link>
-          <Link href="/creator-dashboard">
+          <Link href="/dashboard">
             <a className="mr-6 text-pink-500">
-              Creator Dashboard
+              Dashboard
             </a>
           </Link>
         </div>
@@ -34,4 +35,4 @@ function Marketplace({ Component, pageProps }) {
   )
 }
 
-export default Marketplace
+export default MyApp
