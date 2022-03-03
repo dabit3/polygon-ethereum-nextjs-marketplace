@@ -103,6 +103,7 @@ contract NFTMarketplace is ERC721URIStorage {
       uint256 tokenId
       ) public payable {
       uint price = idToMarketItem[tokenId].price;
+      address seller = idToMarketItem[tokenId].seller;
       require(msg.value == price, "Please submit the asking price in order to complete the purchase");
       idToMarketItem[tokenId].owner = payable(msg.sender);
       idToMarketItem[tokenId].sold = true;
@@ -110,7 +111,7 @@ contract NFTMarketplace is ERC721URIStorage {
       _itemsSold.increment();
       _transfer(address(this), msg.sender, tokenId);
       payable(owner).transfer(listingPrice);
-      payable(idToMarketItem[tokenId].seller).transfer(msg.value);
+      payable(seller).transfer(msg.value);
     }
 
     /* Returns all unsold market items */
