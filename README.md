@@ -45,19 +45,31 @@ npm install
 yarn
 ```
 
-2. Start the local Hardhat node
+2. Test the smart contracts
+
+```sh
+npx harthat test
+```
+Note that on some systems you'll need to set old SSL environment via
+
+```sh
+export NODE_OPTIONS=--openssl-legacy-provider
+```
+
+
+3. Start the local Hardhat node
 
 ```sh
 npx hardhat node
 ```
 
-3. With the network running, deploy the contracts to the local network in a separate terminal window
+4. With the network running, deploy the contracts to the local network in a separate terminal window
 
 ```sh
 npx hardhat run scripts/deploy.js --network localhost
 ```
 
-4. Start the app
+5. Start the app
 
 ```
 npm run dev
