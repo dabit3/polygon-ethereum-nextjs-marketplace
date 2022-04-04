@@ -6,12 +6,15 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "lint-fix": "next lint --fix"
   },
   "dependencies": {
     "@nomiclabs/hardhat-ethers": "^2.0.5",
     "@nomiclabs/hardhat-waffle": "^2.0.2",
     "@openzeppelin/contracts": "^4.5.0",
+    "@types/react": "^17.0.43",
+    "@walletconnect/web3-provider": "^1.7.7",
     "axios": "^0.26.0",
     "chai": "^4.3.6",
     "ethereum-waffle": "^3.4.0",
@@ -21,12 +24,17 @@
     "next": "11.0.1",
     "react": "17.0.2",
     "react-dom": "17.0.2",
+    "typescript": "^4.6.3",
     "web3modal": "^1.9.5"
   },
   "devDependencies": {
+    "@tailwindcss/forms": "^0.5.0",
+    "@testing-library/jest-dom": "^5.16.3",
+    "@testing-library/react": "^13.0.0",
     "autoprefixer": "^10.2.6",
     "eslint": "7.29.0",
     "eslint-config-next": "11.0.1",
+    "jest": "^27.5.1",
     "postcss": "^8.3.5",
     "tailwindcss": "^2.2.4"
   }
