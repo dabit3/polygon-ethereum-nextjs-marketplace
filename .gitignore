@@ -42,3 +42,7 @@ node_modules
 #Hardhat files
 cache
 artifacts
+
+# OS specific local files
+.DS_Store
+Thumbs.db
