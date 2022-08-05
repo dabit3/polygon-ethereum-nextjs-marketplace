@@ -22,7 +22,7 @@ This endpoint will look something like this:
 https://8545-copper-swordtail-j1mvhxv3.ws-eu18.gitpod.io/
 ```
 
-The chain ID should be 1337. If you have a localhost rpc set up, you may need to overwrite it.
+The chain ID should be 31337. If you have a localhost rpc set up, you may need to overwrite it.
 
 ![MetaMask RPC Import](wallet.png)
 
@@ -79,7 +79,7 @@ module.exports = {
   defaultNetwork: "hardhat",
   networks: {
     hardhat: {
-      chainId: 1337
+      chainId: 31337
     },
     mumbai: {
       // Infura
