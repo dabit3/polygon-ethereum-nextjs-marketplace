@@ -42,3 +42,7 @@ node_modules
 #Hardhat files
 cache
 artifacts
+
+# Environment
+.env
+.env.local
