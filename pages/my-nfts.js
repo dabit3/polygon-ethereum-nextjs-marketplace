@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 import axios from 'axios'
 import Web3Modal from 'web3modal'
 import { useRouter } from 'next/router'
+import Image from 'next/image'
 
 import {
   marketplaceAddress
@@ -19,7 +20,8 @@ export default function MyAssets() {
   }, [])
   async function loadNFTs() {
     const web3Modal = new Web3Modal({
-      network: "mainnet",
+      //network: "mainnet",  2023.09.22
+      network: "mumbai",
       cacheProvider: true,
     })
     const connection = await web3Modal.connect()
@@ -57,8 +59,17 @@ export default function MyAssets() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-4">
           {
             nfts.map((nft, i) => (
-              <div key={i} className="border shadow rounded-xl overflow-hidden">
-                <img src={nft.image} className="rounded" />
+              <div key={i} className="border shadow rounded-xl overflow-hidden"  priority={false}  style={{position: 'relative'}}>
+                <Image 
+                 // layout="fill"  
+                  sizes="10vw"
+                  height="100"
+                  width="100"
+                  className="rounded" 
+                  //priority={true}
+                  src={nft.image} 
+                />
+                
                 <div className="p-4 bg-black">
                   <p className="text-2xl font-bold text-white">Price - {nft.price} Eth</p>
                   <button className="mt-4 w-full bg-pink-500 text-white font-bold py-2 px-12 rounded" onClick={() => listNFT(nft)}>List</button>

@@ -2,10 +2,12 @@ import { ethers } from 'ethers'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import Web3Modal from 'web3modal'
+import Image from 'next/image'
 
 import {
   marketplaceAddress
 } from '../config'
+//export const marketplaceAddress = "0x7eAaC1368131aBf18037b8BB9A40d4c76A6057Cd"  //2023.9.24
 
 import NFTMarketplace from '../artifacts/contracts/NFTMarketplace.sol/NFTMarketplace.json'
 
@@ -17,7 +19,8 @@ export default function Home() {
   }, [])
   async function loadNFTs() {
     /* create a generic provider and query for unsold market items */
-    const provider = new ethers.providers.JsonRpcProvider()
+    //const provider = new ethers.providers.JsonRpcProvider("https://rpc-mumbai.maticvigil.com")  2023.09.24
+    const provider = new ethers.providers.JsonRpcProvider("https://polygon-mumbai.infura.io/v3/9b68deaa2df44ef683962fe8c6bdf73c")
     const contract = new ethers.Contract(marketplaceAddress, NFTMarketplace.abi, provider)
     const data = await contract.fetchMarketItems()
 
@@ -66,8 +69,16 @@ export default function Home() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-4">
           {
             nfts.map((nft, i) => (
-              <div key={i} className="border shadow rounded-xl overflow-hidden">
-                <img src={nft.image} />
+              <div key={i} className="border shadow rounded-xl overflow-hidden"  priority={false}  style={{position: 'relative'}}>
+                <Image 
+                 // layout="fill"  
+                  sizes="10vw"
+                  height="100"
+                  width="100"
+                 // priority={true}
+                  className="rounded"  
+                  src={nft.image} 
+                />
                 <div className="p-4">
                   <p style={{ height: '64px' }} className="text-2xl font-semibold">{nft.name}</p>
                   <div style={{ height: '70px', overflow: 'hidden' }}>
